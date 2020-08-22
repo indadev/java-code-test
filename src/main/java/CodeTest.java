@@ -1,17 +1,26 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
 
 public class CodeTest {
     public static void main(String[] args) {
+        String[] input = new String[]{"First", "Second"};
+        System.out.println(Arrays.toString(reverseArray(input)));
+        System.out.println(Arrays.toString(uppercaseArray(input)));
         System.out.println("Please replace this with calls to all completed tests.");
     }
 
     public static String[] reverseArray(String[] input) {
-        // add code here
-        return input;
+        List<String> listInput = Arrays.asList(input);
+        Collections.reverse(listInput);
+        return listInput.toArray(new String[0]);
     }
 
     public static String[] uppercaseArray(String[] input) {
-        // add code here
+        for (int i = 0; i < input.length; i++) {
+            input[i] = input[i].toUpperCase();
+        }
         return input;
     }
 
@@ -21,8 +30,8 @@ public class CodeTest {
     }
 
     public static Function<Integer,Integer> composeU(Function<Integer,Integer> f1, Function<Integer,Integer> f2){
-        // add code here
-        return null;
+
+        return f1.compose(f2);
     }
 
     public static void writeContentsToConsole() {
