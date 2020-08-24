@@ -8,6 +8,8 @@ public class CodeTest {
         String[] input = new String[]{"First", "Second"};
         System.out.println(Arrays.toString(reverseArray(input)));
         System.out.println(Arrays.toString(uppercaseArray(input)));
+        System.out.println(findWordCount("the cat jumped over the mat","the"));
+        System.out.println(findWordCount("the cat jumped over the mat","cat"));
         System.out.println("Please replace this with calls to all completed tests.");
     }
 
@@ -25,8 +27,16 @@ public class CodeTest {
     }
 
     public static int findWordCount(String text, String wordToFind) {
-        // add code here
-        return 0;
+        int res = 0;
+        
+        String[] words = text.trim().split("\\s+");
+        for (String word:words){
+            if (word.equalsIgnoreCase(wordToFind)){
+                res ++;
+            }
+        }
+        
+        return res;
     }
 
     public static Function<Integer,Integer> composeU(Function<Integer,Integer> f1, Function<Integer,Integer> f2){
