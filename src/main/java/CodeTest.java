@@ -1,7 +1,13 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CodeTest {
     public static void main(String[] args) {
@@ -10,6 +16,7 @@ public class CodeTest {
         System.out.println(Arrays.toString(uppercaseArray(input)));
         System.out.println(findWordCount("the cat jumped over the mat","the"));
         System.out.println(findWordCount("the cat jumped over the mat","cat"));
+        writeContentsToConsole();
         System.out.println("Please replace this with calls to all completed tests.");
     }
 
@@ -45,7 +52,16 @@ public class CodeTest {
     }
 
     public static void writeContentsToConsole() {
-        // add code here
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/main/resources/text.txt"));
+            for(String line; (line = br.readLine()) != null; ) {
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CodeTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CodeTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void handleInvalidArgument() {
