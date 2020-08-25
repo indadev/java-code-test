@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -10,13 +11,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CodeTest {
+    
+    private static String[] input;
+    
     public static void main(String[] args) {
-        String[] input = new String[]{"First", "Second"};
-        System.out.println(Arrays.toString(reverseArray(input)));
-        System.out.println(Arrays.toString(uppercaseArray(input)));
+        input = args;
+        
+        System.out.println(Arrays.toString(reverseArray(new String[]{"First", "Second"})));
+        System.out.println(Arrays.toString(uppercaseArray(new String[]{"1toUpper", "2toUpper"})));
         System.out.println(findWordCount("the cat jumped over the mat","the"));
         System.out.println(findWordCount("the cat jumped over the mat","cat"));
         writeContentsToConsole();
+        handleInvalidArgument();
+        puzzle();
         System.out.println("Please replace this with calls to all completed tests.");
     }
 
@@ -64,11 +71,38 @@ public class CodeTest {
         }
     }
 
-    public static void handleInvalidArgument() {
-        // add code here
+    public static boolean isNumeric(String num){
+        boolean res = false;
+        if (num == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(num); 
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        res = true;
+        return res;
+    }
+    
+    public static void handleInvalidArgument() throws NumberFormatException{
+        for (String arg: input){
+            if (!isNumeric(arg)){
+                throw new NumberFormatException(arg + " is not a number");
+            }
+        }
     }
 
     public static void puzzle() {
-        // add code here
+        handleInvalidArgument();
+        String actual = "";
+        for (String arg: input){
+            if (actual.equals(arg)){
+                System.out.println("Snap");
+                break;
+            }else{
+                System.out.println(arg + ",");
+            }
+        }
     }
 }
