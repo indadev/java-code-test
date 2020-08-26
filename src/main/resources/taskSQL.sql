@@ -26,3 +26,4 @@ values
 select *
 from clients c
 left join clients_invoices ci on c.client_id = ci.client_id;  
+

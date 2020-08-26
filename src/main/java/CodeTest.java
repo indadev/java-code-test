@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class CodeTest {
     
-    private static String[] input;
+    public static String[] input;
     
     public static void main(String[] args) {
         input = args;
@@ -98,11 +98,12 @@ public class CodeTest {
         String actual = "";
         for (String arg: input){
             if (actual.equals(arg)){
-                System.out.println("Snap");
+                System.out.print(arg + ",Snap");
                 break;
             }else{
-                System.out.println(arg + ",");
+                System.out.print(arg + ",");
             }
+            actual = arg;
         }
     }
 }
