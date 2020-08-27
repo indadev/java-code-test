@@ -21,10 +21,11 @@ public class CodeTest {
         System.out.println(Arrays.toString(uppercaseArray(new String[]{"1toUpper", "2toUpper"})));
         System.out.println(findWordCount("the cat jumped over the mat","the"));
         System.out.println(findWordCount("the cat jumped over the mat","cat"));
+        System.out.println(composeU(x -> x + 2, x -> x + 3).apply(1));
         writeContentsToConsole();
         handleInvalidArgument();
         puzzle();
-        System.out.println("Please replace this with calls to all completed tests.");
+        
     }
 
     public static String[] reverseArray(String[] input) {
